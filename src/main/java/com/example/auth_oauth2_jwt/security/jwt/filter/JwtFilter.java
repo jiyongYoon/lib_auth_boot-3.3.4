@@ -31,6 +31,11 @@ public class JwtFilter extends OncePerRequestFilter {
         //cookie들을 불러온 뒤 Authorization Key에 담긴 쿠키를 찾음
         String authorization = null;
         Cookie[] cookies = request.getCookies();
+        if (cookies == null) {
+            doFilterInternal(request, response, filterChain);
+            return;
+        }
+
         for (Cookie cookie : cookies) {
 
             System.out.println(cookie.getName());
