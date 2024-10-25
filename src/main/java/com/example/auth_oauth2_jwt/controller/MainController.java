@@ -1,15 +1,16 @@
 package com.example.auth_oauth2_jwt.controller;
 
-import org.springframework.stereotype.Controller;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
+@RequiredArgsConstructor
 public class MainController {
 
-    @GetMapping("/")
-    @ResponseBody
-    public String mainAPI() {
-        return "main route";
+    @GetMapping
+    public String main() {
+        return "Hello!";
     }
+
 }

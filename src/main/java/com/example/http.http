@@ -1,0 +1,23 @@
+### 회원가입
+POST http://localhost:8080/api/signup
+Content-Type: application/json
+
+{
+  "username": "이름",
+  "password": "1234",
+  "email": "email@mail.com"
+}
+
+### 로그인
+POST http://localhost:8080/api/login
+Content-Type: application/json
+
+{
+  "username": "email@mail.com",
+  "password": "1234"
+}
+
+### data
+GET http://localhost:8080/my
+Cookie: Authorization=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX3JvbGUiOiJST0xFX1VTRVIiLCJ1c2VyX2lkIjo3LCJ1c2VyX25hbWUiOiJlbWFpbEBtYWlsLmNvbSIsImlzcyI6InlvdXR1YmUtc3VtbWFyeS1hcHAiLCJleHBpcmVkX2RhdGUiOjE3Mjk4NzA5Mjd9.tm1Kddz3t_R3AXCqAXKwzd47KCKmS00SK-bNpZtUNSc
+
