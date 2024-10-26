@@ -5,6 +5,7 @@ import com.example.auth_oauth2_jwt.entity.UserEntity;
 import com.example.auth_oauth2_jwt.entity.UserRole;
 import com.example.auth_oauth2_jwt.repository.UserRepository;
 import com.example.auth_oauth2_jwt.security.oauth.OAuth2Provider;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,8 +21,10 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
 
     public UserDto createUser(UserDto userDto) {
-        if (userRepository.findByEmail(userDto.getEmail()).isPresent()) {
+        Optional<UserEntity> optionalUser = userRepository.findByEmail(userDto.getEmail());
+        if (optionalUser.isPresent()) {
             log.error("already exist!! email = {}", userDto.getEmail());
+            return UserDto.toDto(optionalUser.get());
         }
 
         UserEntity userEntity = UserEntity.builder()
